@@ -11,7 +11,11 @@ bedrooms, fireplaces, and rooms.
 Model without Outliers
 
 Data Management
-A linear regression model requires a numerical response variable. The predictor variables that were misclassified by RStudio were converted into their correct variable types. This includes New.Construction, Waterfront, and Central.Air which were converted to logical variables. In addition, Fuel.Type, Heat.Type, and Sewer.Type were converted into factor variables. Following which, the outliers were removed using the removeOutliers command based on the z-score method.
+A linear regression model requires a numerical response variable. 
+The predictor variables that were misclassified by RStudio were converted into their correct variable types. 
+This includes New.Construction, Waterfront, and Central.Air which were converted to logical variables. 
+In addition, Fuel.Type, Heat.Type, and Sewer.Type were converted into factor variables. 
+Following which, the outliers were removed using the removeOutliers command based on the z-score method.
 
 Partitioning the Data
 A seed with code 1234 is set to standardize the model results. The data is partitioned using the 70:30 split to create the training and test data set.
@@ -19,4 +23,90 @@ A seed with code 1234 is set to standardize the model results. The data is parti
 Build the Model
 The linear regression model is built using R with Price as the response variable and the other variables as the predictor variables. 
 The output is as follows:
-Price = -3234.31 + 11399.79 Lot.Size + 140341.90 WaterfrontTRUE -270.75 Age + 0.94 Land.Value -28437.08 New.ConstructTRUE + 9416.59 Central.AirTRUE -6369.78 Fuel.Type2 -3935.75 Fuel.Type3 -10239.52 Heat.Type2 - 1097.07 Heat.Type3 + 28328.31 Sewer.Type2 + 24207.35 Sewer.Type3 + 64.23 Living.Area - 22580.23 Bathrooms + 1367.02 Rooms
+Price = -3234.31 + 11399.79 Lot.Size + 140341.90 WaterfrontTRUE -270.75 Age + 0.94 Land.Value -28437.08 New.ConstructTRUE + 
+9416.59 Central.AirTRUE -6369.78 Fuel.Type2 -3935.75 Fuel.Type3 -10239.52 Heat.Type2 - 1097.07 Heat.Type3 + 28328.31 Sewer.Type2 + 
+24207.35 Sewer.Type3 + 64.23 Living.Area - 22580.23 Bathrooms + 1367.02 Rooms
+
+The first step to analyzing the model involves evaluating the statistical significance of the overall model. 
+The p-value of this overall model is p < 2.2e-16, which indicates that this model is statistically significant. 
+Therefore, at a significance level of alpha = 0.05, there is sufficient evidence to conclude that a linear relationship exists between Price 
+and all the predictor variables. Next, the statistical significance of all the individual predictor variables was analyzed. 
+Only the variables WaterfrontTRUE, Age, Land.Value, New.ConstructTRUE, Central.AirTRUE, Heat.Type2, Living.Area, and Bathrooms 
+have at least one star at the end of the row, which indicates that these variables have p-values that are greater than 0.05 
+and are not statistically significant. The fit of this model is then assessed using the coefficient of multiple determination (R2) and the standard error. 
+The R2 of this model is 0.6364, which means that 63.64% of the observed variation of price can be explained by the variation in the predictor variables. 
+The standard error is 49970, which implies that the predictions of prices are within $49970 of its actual value. 
+The low R2 and high standard error indicate that the model does not make reliable predictions.
+Since there are variables that are not statistically significant, and to avoid potential overfitting, 
+the model is improved using the stepwise regression methods. 
+All three stepwise methods – forward, backward, and both – are performed and analyzed to obtain the best final model. 
+All three stepwise regression methods generated the same output. Thus, the forward stepwise regression model is used. 
+The forward stepwise method starts with a model consisting only of the intercept and then adds one variable at a time until the model stops improving. 
+The equation generated using this model is:
+
+Price = 21888.30 + 66.06 Living.Area + 0.93 Land.Value +139148.45 WaterfrontTRUE + 22049.36 Bathrooms + 9177.05 Central.AirTRUE -282.02 Age 
+- 27920.37 New.ConstructTRUE + 12623.45 Lot.Size - 10759.38 Heat.Type2 - 7170.77 Heat.Type3
+
+The model uses the following predictor variables: Living.Area, Land.Value, WaterfrontTRUE,Bathrooms, Central.Air, Age, New.ConstructTURE, Lot.Size, and Heat.Type
+
+The summary output shows that the overall model is statistically significant with a p-value of < 2.2e-16. 
+All of the predictor variables have a p-value less than 0.05, except for Heat.Type3 which has a p-value of 0.09. 
+
+Predictions and Evaluation
+The forward stepwise regression model is used to make predictions on the test data set. 
+Based on these predictions, the model is evaluated using the relevant KPIs.
+To assess the model, the accuracy of the predictions made using the model is compared with the actual values in the test data set. 
+This is computed using the residuals, which is the difference between the actual price and the predicted price. 
+Following this, the KPIs are generated – RMSE and MAPE. The RMSE for this model is $45207.82, which means that on average, using the given seed, 
+the expected predictions are within $45207.82 of the actual price of the house. The MAPE is 20.5%, which indicates that on average, 
+given the current seed, the predictions are within 20.5% away from the actual price of the house.  
+
+Benchmarking
+In order to evaluate the model KPIs, benchmark KPIs are created. 
+Comparing the model KPIs to the benchmark KPIs assesses the model created in comparison to having no model at all. 
+The mean of the response variable, Price, from the training data set is used to compute the benchmark, 
+following which the relevant residuals are calculated. 
+The residuals of the benchmark are the difference between the actual house prices in the testing data and the benchmark. 
+The benchmark RMSE is $74883.25, and the benchmark MAPE is 36.8%. These benchmark numbers indicate that, on average, 
+the predictions made using the mean of all the house prices would be $74883.25 away from the actual price of the house.
+In addition, predictions made with the benchmark are expected to be within 36.8% away from the actual house price. 
+The model KPIs are lower than the benchmark KPIs indicating the model without outliers is better than not using any model.
+
+Model with Outliers
+Outliers can influence the result and predictive power of a model. 
+However, simply removing all the outliers can also lead to a biased sample. 
+In order to analyze the effects of outliers on the data set, a linear regression model is created with the data set including outliers.
+
+Build the Model
+Following the procedure as the model without outliers, except for removing the outliers, 
+the linear regression model generated the following output based on the forward stepwise regression method:
+
+Price = 17164.12 + 74.11 Living.Area + 0.88 Land.Value + 23158.62 Bathrooms + 111877.37 WaterfrontTRUE - 43125.92 New.ConstructTRUE 
+- 12734.90 Heat.Type2 - 10033.28 Heat.Type3 - 9082.46 Bedrooms + 2873.11 Rooms + 5047.88 Lot.Size + 8613.31 Central.AirTRUE
+The model uses the following predictor variables: Living.Area, Land.Value, Bathrooms, WaterfrontTRUE, New.Construct, Heat.Type, Bedrooms, Rooms, 
+Lot.Size, and Central.AirTURE.
+
+The model is first analyzed based on the statistical significance of the overall model as well as all the predictor variables. 
+At a significance level of alpha = 0.05, there is sufficient evidence to conclude that there is a linear relationship between price and
+the predictor variables. In addition, all the predictor variables in the model are statistically significant since they all have p-values less than 0.05. 
+The model is also evaluated using the R2 and standard error. 
+The R2 of this model is 0.6392, which means that 63.92% of the observed variation in price can be explained by the observed variation in the 
+predictor variables. The standard error implies that the predictions have an error of $58440, on average.
+
+Predictions and Evaluations
+The model is evaluated using RMSE and MAPE. The RMSE is $58248.44, and the MAPE is 30.4%. 
+This suggests that the predictions made using the model with outliers will be, on average, within $58248.44 from the actual house prices. 
+The MAPE of 30.4% indicates that, on average, predictions are about 30.4% away from the actual prices of the house. 
+
+Benchmarking 
+Similar to the previous model, the benchmark KPIs are generated to compare the model KPIs. 
+The benchmark RMSE is $102059.64, and the benchmark MAPE is 49.4%. Both the model KPIs are lower than the benchmark KPIs indicating that 
+the model with outliers is better than not using any model.
+
+Linear Regression Summary
+Model Without Outliers	Model With Outliers
+RMSE ($)	45207.82	58248.44
+Benchmark RMSE ($)	74883.25	102059.64
+MAPE	20.5%	30.4%
+Benchmark MAPE	36.8%	49.4%
+
