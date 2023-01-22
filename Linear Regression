@@ -110,3 +110,12 @@ Benchmark RMSE ($)	       74883.25	102059.64
 MAPE	                        20.5%	30.4%
 Benchmark MAPE	              36.8%	49.4%
 
+The linear regression model without outliers has a lower RMSE and MAPE than the linear regression model with outliers. 
+The model created without outliers has an RMSE of $45207.82 and a MAPE of 20.5%. 
+This indicates that the predictions made using the model without outliers are closer to the actual house prices and are better than 
+the model with outliers. Furthermore, the average error for the model without outliers is lower than the average error for the model with outliers. 
+This means that the predictions made using the model without outliers are better and more accurate than having no model at all. 
+In conclusion, the model without outliers is useful in predicting the prices of houses in Saratoga, New York. 
+
+
+
