@@ -104,9 +104,9 @@ The benchmark RMSE is $102059.64, and the benchmark MAPE is 49.4%. Both the mode
 the model with outliers is better than not using any model.
 
 Linear Regression Summary
-Model Without Outliers	Model With Outliers
-RMSE ($)	45207.82	58248.44
-Benchmark RMSE ($)	74883.25	102059.64
-MAPE	20.5%	30.4%
-Benchmark MAPE	36.8%	49.4%
+            Model Without Outliers	Model With Outliers
+RMSE ($)	                 45207.82	58248.44
+Benchmark RMSE ($)	       74883.25	102059.64
+MAPE	                        20.5%	30.4%
+Benchmark MAPE	              36.8%	49.4%
 
