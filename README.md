@@ -60,15 +60,11 @@ Histogram of the price variable from the data set with outliers
 
 Histogram of the price variable from the data set without outliers
 
-
-
-
-
-
-
-
 ![image](https://user-images.githubusercontent.com/123300713/213913778-df8a69b1-0bf6-4ece-b065-898f56430896.png)
 
 
 
 
+In addition to removing the outliers, the classification of certain variables was changed, too. Fuel Type and Heat Type have 3-factor levels, each. The factor levels were labeled as 2, 3, and 4, respectively, i.e., none of the variables has a Fuel Type of 1 or a Heat Type of type 1. In order to improve the comprehension and visual representation of the data, the order, and label of the factor levels were changed from 2, 3, and 4, to 1, 2, and 3, respectively, for both the Fuel Type and Heat Type variables.
+Moreover, the Pct variable, which indicates the percentage of people who have attended a 4-year college in a certain zip code area, was removed. This variable was removed because the zip codes of each area are missing; thus, it is not possible to connect the percentages to their respective zip code. Secondly, since the zip codes are missing, and hypothetically more than one area can have the same value, it is not possible to manually classify the values. In addition, Pct is not one of the essential home features or variables in the data set. Therefore, it was removed from the data before creating the models.
+Finally, each model uses a 70:30 data split. This implies that 70% of the data is used in the training set and 30% of the data is used in the test set. Given that the data set is relatively small, this specific data split helps avoid overfitting and uses more data in the training set to make more accurate predictions. 
