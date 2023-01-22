@@ -1,5 +1,4 @@
-**Housing-Prices-Saratoga-NY
-**
+**Housing-Prices-Saratoga-NY**
 
 Abstract
 
