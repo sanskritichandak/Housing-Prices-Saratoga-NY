@@ -12,3 +12,11 @@ Model without Outliers
 
 Data Management
 A linear regression model requires a numerical response variable. The predictor variables that were misclassified by RStudio were converted into their correct variable types. This includes New.Construction, Waterfront, and Central.Air which were converted to logical variables. In addition, Fuel.Type, Heat.Type, and Sewer.Type were converted into factor variables. Following which, the outliers were removed using the removeOutliers command based on the z-score method.
+
+Partitioning the Data
+A seed with code 1234 is set to standardize the model results. The data is partitioned using the 70:30 split to create the training and test data set.
+
+Build the Model
+The linear regression model is built using R with Price as the response variable and the other variables as the predictor variables. 
+The output is as follows:
+Price = -3234.31 + 11399.79 Lot.Size + 140341.90 WaterfrontTRUE -270.75 Age + 0.94 Land.Value -28437.08 New.ConstructTRUE + 9416.59 Central.AirTRUE -6369.78 Fuel.Type2 -3935.75 Fuel.Type3 -10239.52 Heat.Type2 - 1097.07 Heat.Type3 + 28328.31 Sewer.Type2 + 24207.35 Sewer.Type3 + 64.23 Living.Area - 22580.23 Bathrooms + 1367.02 Rooms
