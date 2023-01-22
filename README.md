@@ -19,11 +19,29 @@ The data set consists of data related to houses in Saratoga, New York from 2015.
 The raw data introduced above consists of 1,728 points. The first step involved in cleaning the data is checking for duplicates and missing values. Since there are no duplicates or missing values found in the data set, the next step in cleaning the data is removing the outliers. There are two methods to remove outliers – the box-plot method and the z-score method. The z-score method measures the deviation of data points from the mean. Using the z-score method in RStudio, the data points furthest away from the mean are removed. The removeOutliers function is run only once, since running it repeatedly changes the range that is considered when removing outliers.
 Below are the boxplots and histograms for the data set with and without the outliers. As observed, after removing the outliers, the data is less skewed and the histogram has a more normal distribution. 
 
-Figure 1
+**Figure 1**
+
 Boxplots of all the variables from the data set with outliers
 
 <img width="310" alt="image" src="https://user-images.githubusercontent.com/123300713/213914186-ab428936-0656-48ce-bc26-bb01dc95df07.png">
 
+**Figure 2**
+
+Boxplots of all the variables from the data set without outliers
+
+<img width="315" alt="image" src="https://user-images.githubusercontent.com/123300713/213914238-7eb19d56-d4c2-4363-af88-f7dbe63476d2.png">
+
+**Figure 3**
+
+Histogram of the price variable from the data set with outliers
+
+<img width="264" alt="image" src="https://user-images.githubusercontent.com/123300713/213914269-c9490e3b-95a7-462a-9974-92dee01a3942.png">
+
+**Figure 4**
+
+Histogram of the price variable from the data set without outliers
+
+<img width="283" alt="image" src="https://user-images.githubusercontent.com/123300713/213914278-0f0a92a5-e061-45e5-83ac-6a7ad2b5899e.png">
 
 In addition to removing the outliers, the classification of certain variables was changed, too. Fuel Type and Heat Type have 3-factor levels, each. The factor levels were labeled as 2, 3, and 4, respectively, i.e., none of the variables has a Fuel Type of 1 or a Heat Type of type 1. In order to improve the comprehension and visual representation of the data, the order, and label of the factor levels were changed from 2, 3, and 4, to 1, 2, and 3, respectively, for both the Fuel Type and Heat Type variables.
 Moreover, the Pct variable, which indicates the percentage of people who have attended a 4-year college in a certain zip code area, was removed. This variable was removed because the zip codes of each area are missing; thus, it is not possible to connect the percentages to their respective zip code. Secondly, since the zip codes are missing, and hypothetically more than one area can have the same value, it is not possible to manually classify the values. In addition, Pct is not one of the essential home features or variables in the data set. Therefore, it was removed from the data before creating the models.
