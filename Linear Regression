@@ -1,0 +1,11 @@
+
+Model 1 – Linear Regression
+
+Research Question: How do the home features in Saratoga, NY affect the price of houses?
+
+The linear regression model aims to investigate the relationship between house prices in Saratoga and its home features. The goal is to predict the house prices based on the lot size, whether it is located on the waterfront, the age, the land value, whether it is newly constructed, whether it is has central air, the fuel type, heat type, sewer type, the living area, the number of bathrooms, bedrooms, fireplaces, and rooms. 
+
+Model without Outliers
+
+Data Management
+A linear regression model requires a numerical response variable. The predictor variables that were misclassified by RStudio were converted into their correct variable types. This includes New.Construction, Waterfront, and Central.Air which were converted to logical variables. In addition, Fuel.Type, Heat.Type, and Sewer.Type were converted into factor variables. Following which, the outliers were removed using the removeOutliers command based on the z-score method.
