@@ -29,31 +29,14 @@ Boxplots of all the variables from the data set with outliers
 
 Boxplots of all the variables from the data set without outliers
 
-
-
-
-
-
-
-
-
-
-
+<img width="315" alt="image" src="https://user-images.githubusercontent.com/123300713/213914130-0c10b3a4-b0b3-4b59-b01e-5e1baab638e5.png">
 
 
 **Figure 3**
 
 Histogram of the price variable from the data set with outliers
 
-
-
-
-
-
-
-
-
-
+<img width="264" alt="image" src="https://user-images.githubusercontent.com/123300713/213914136-9c2e92e7-1538-4e76-8fda-bf6ab8c7da20.png">
 
 
 **Figure 4**
@@ -61,8 +44,6 @@ Histogram of the price variable from the data set with outliers
 Histogram of the price variable from the data set without outliers
 
 ![image](https://user-images.githubusercontent.com/123300713/213913778-df8a69b1-0bf6-4ece-b065-898f56430896.png)
-
-
 
 
 In addition to removing the outliers, the classification of certain variables was changed, too. Fuel Type and Heat Type have 3-factor levels, each. The factor levels were labeled as 2, 3, and 4, respectively, i.e., none of the variables has a Fuel Type of 1 or a Heat Type of type 1. In order to improve the comprehension and visual representation of the data, the order, and label of the factor levels were changed from 2, 3, and 4, to 1, 2, and 3, respectively, for both the Fuel Type and Heat Type variables.
